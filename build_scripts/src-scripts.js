@@ -1,10 +1,6 @@
 import express from "express";
-import { fileURLToPath } from "url";
-import { join, dirname } from "path";
+import { join } from "path";
 import open from "open";
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
 
 const port = 3000;
 
