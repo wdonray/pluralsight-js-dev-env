@@ -3,7 +3,13 @@
   "version": "1.0.0",
   "description": "JavaScript development environment Pluralsight course by Cory House",
   "type": "module",
-  "scripts": {},
+  "scripts": {
+    "prestart": "node build_scripts/messages/start-message.js",
+    "start": "node build_scripts/src-scripts.js",
+    "prelocaltunnel": "node build_scripts/messages/share-message.js",
+    "localtunnel": "lt --port 3000 --subdomain donray",
+    "share": "npm-run-all --parallel start localtunnel"
+  },
   "author": "Donray Williams",
   "license": "MIT",
   "dependencies": {
@@ -15,6 +21,7 @@
     "@babel/node": "^7.13.0",
     "@babel/preset-env": "7.13.8",
     "@babel/register": "7.13.8",
+    "@types/express": "^4.17.14",
     "babel-loader": "8.2.2",
     "chai": "4.3.0",
     "chalk": "4.1.0",
