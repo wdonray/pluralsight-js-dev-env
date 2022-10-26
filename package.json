@@ -1,13 +1,16 @@
 {
   "name": "javascript-development-environment",
   "version": "1.0.0",
-  "description": "JavaScript development environment Pluralsight course by Cory House",
+  "description": "JavaScript development environment Pluralsight course",
   "scripts": {
     "prestart": "babel-node build_scripts/messages/start-message.js",
-    "start": "babel-node build_scripts/src-server.js",
+    "start": "npm-run-all --parallel open:src lint:watch",
+    "open:src": "babel-node build_scripts/src-server.js",
     "prelocaltunnel": "babel-node build_scripts/messages/share-message.js",
     "localtunnel": "lt --port 3000 --subdomain donray",
-    "share": "npm-run-all --parallel start localtunnel"
+    "share": "npm-run-all --parallel start localtunnel",
+    "lint": "esw webpack.config.* src build_scripts --color",
+    "lint:watch": "npm run lint -- --watch"
   },
   "author": "Donray Williams",
   "license": "MIT",
