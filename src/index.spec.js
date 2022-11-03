@@ -24,14 +24,14 @@ describe('index.html', () => {
     }
   };
 
-  it('should say hello', () => {
+  it('should have h1 that says Users', () => {
     const { dom, close } = setup();
 
     const h1Index = 0;
 
     const h1 = dom.window.document.getElementsByTagName('h1')[h1Index];
 
-    expect(h1.innerHTML).to.equal('Hello World')
+    expect(h1.innerHTML).to.equal('Users');
 
     close();
   });
