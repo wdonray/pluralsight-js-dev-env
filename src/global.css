@@ -11,3 +11,8 @@ body {
 table th {
   padding: 5px;
 }
+
+.deleteUser {
+  padding-right: 10px;
+  color: wheat;
+}
