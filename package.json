@@ -3,14 +3,16 @@
   "version": "1.0.0",
   "description": "JavaScript development environment Pluralsight course",
   "scripts": {
-    "prestart": "babel-node build_scripts/messages/start-message.js",
-    "start": "npm-run-all --parallel open:src lint:watch",
+    "lint:watch": "npm run lint -- --watch",
+    "lint": "esw webpack.config.* src build_scripts --color",
+    "localtunnel": "lt --port 3000 --subdomain donray",
     "open:src": "babel-node build_scripts/src-server.js",
     "prelocaltunnel": "babel-node build_scripts/messages/share-message.js",
-    "localtunnel": "lt --port 3000 --subdomain donray",
+    "prestart": "babel-node build_scripts/messages/start-message.js",
     "share": "npm-run-all --parallel start localtunnel",
-    "lint": "esw webpack.config.* src build_scripts --color",
-    "lint:watch": "npm run lint -- --watch"
+    "start": "npm-run-all --parallel open:src lint:watch test:watch",
+    "test": "mocha --reporter progress build_scripts/test-setup.js \"src/**/*.spec.js\"",
+    "test:watch": "npm run test -- --watch"
   },
   "author": "Donray Williams",
   "license": "MIT",
@@ -31,9 +33,9 @@
     "compression": "1.7.4",
     "cross-env": "7.0.3",
     "css-loader": "5.1.0",
-    "eslint": "7.21.0",
     "eslint-plugin-import": "2.22.1",
     "eslint-watch": "7.0.0",
+    "eslint": "7.21.0",
     "express": "4.17.1",
     "faker": "^5.4.0",
     "html-webpack-plugin": "5.2.0",
@@ -49,7 +51,7 @@
     "rimraf": "3.0.2",
     "style-loader": "2.0.0",
     "surge": "0.21.7",
-    "webpack": "5.24.2",
-    "webpack-dev-middleware": "4.1.0"
+    "webpack-dev-middleware": "4.1.0",
+    "webpack": "5.24.2"
   }
 }
