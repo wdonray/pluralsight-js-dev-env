@@ -19,7 +19,8 @@
     "clean-dist": "rimraf ./dist && mkdir dist",
     "prebuild": "npm-run-all clean-dist test lint",
     "build": "babel-node build_scripts/build.js",
-    "postbuild": "babel-node build_scripts/dist-server.js"
+    "postbuild": "babel-node build_scripts/dist-server.js",
+    "deploy": "surge ./dist"
   },
   "scriptsComments": {
     "generate-mock-data": "Generates a mock data file in src/services/api.",
@@ -37,7 +38,8 @@
     "clean-dist": "Deletes and recreates dist folder.",
     "prebuild": "Runs before build, cleans dist folder, run testing and linting.",
     "build": "Builds app for production.",
-    "postbuild": "Starts dist server after build."
+    "postbuild": "Starts dist server after build.",
+    "deploy": "Deploy static UI from dist folder."
   },
   "author": "Donray Williams",
   "license": "MIT",

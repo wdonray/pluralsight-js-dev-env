@@ -10,5 +10,5 @@ const params = new Proxy(new URLSearchParams(window.location.search), {
 
 export const getBaseUrl = () => {
   // Get port from package.json (start-mockapi)
-  return params.useMockApi ? 'http://localhost:3001/' : '/'
+  return params.useMockApi ? 'http://localhost:3001/' : 'https://glacial-taiga-18173.herokuapp.com/'
 }
