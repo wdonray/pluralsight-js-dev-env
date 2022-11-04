@@ -1,4 +1,7 @@
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 import path from 'path';
+
+// Bundling - Compiler
 
 export default {
   // Sets node env to dev
@@ -15,7 +18,12 @@ export default {
     filename: 'bundle.js'
   },
   // Plugins to enhance webpack
-  plugins: [],
+  plugins: [
+    // Create HTML file that includes reference to bundled js
+    new HtmlWebpackPlugin({
+      template: 'src/index.html'
+    })
+  ],
   // How to handle different file types, granting ability to import files
   module: {
     rules: [

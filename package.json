@@ -15,7 +15,11 @@
     "start-mockapi": "json-server --watch src/services/api/db.json --port 3001",
     "start": "npm-run-all --parallel open:src lint:watch test:watch start-mockapi",
     "test:watch": "npm run test -- --watch",
-    "test": "mocha --reporter progress build_scripts/test-setup.js \"src/**/*.spec.js\""
+    "test": "mocha --reporter progress build_scripts/test-setup.js \"src/**/*.spec.js\"",
+    "clean-dist": "rimraf ./dist && mkdir dist",
+    "prebuild": "npm-run-all clean-dist test lint",
+    "build": "babel-node build_scripts/build.js",
+    "postbuild": "babel-node build_scripts/dist-server.js"
   },
   "scriptsComments": {
     "generate-mock-data": "Generates a mock data file in src/services/api.",
@@ -29,7 +33,11 @@
     "start-mockapi": "Starts a JSON server for serving mock data.",
     "start": "Starts local server for local development, spins up linting, test watchers and mock api server with mock data.",
     "test:watch": "Watch for local test changes.",
-    "test": "Run all local test."
+    "test": "Run all local test.",
+    "clean-dist": "Deletes and recreates dist folder.",
+    "prebuild": "Runs before build, cleans dist folder, run testing and linting.",
+    "build": "Builds app for production.",
+    "postbuild": "Starts dist server after build."
   },
   "author": "Donray Williams",
   "license": "MIT",
