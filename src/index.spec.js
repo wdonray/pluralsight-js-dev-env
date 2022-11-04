@@ -2,6 +2,8 @@ import { expect } from 'chai';
 import fs from 'fs';
 import jsdom from 'jsdom';
 
+// Automated Testing
+
 describe('index.js', () => {
   it('should pass', () => {
     expect(true).to.equal(true);

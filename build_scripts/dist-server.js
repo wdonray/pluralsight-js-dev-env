@@ -1,25 +1,23 @@
-import config from '../webpack.config.dev';
+import compression from 'compression';
 import express from 'express';
 import { join } from 'path';
 import open from 'open';
-import webpack from 'webpack';
 
-// Development Webserver
+// Development Webserver for production build testing
+// NOT actual production use, useful for hosting the minified production build for local debugging
+// Serve actual production build through some host
 
 /* eslint-disable no-console */
 
 const port = 3000;
 const app = express();
-const compiler = webpack(config);
 
-// Tell express to use my webpack configuration
-app.use(require('webpack-dev-middleware')(compiler, {
-  publicPath: config.output.publicPath
-}));
+app.use(compression());
+app.use(express.static('dist'));
 
 // Any reference to the root will respond with sending the html file
 app.get('/', (_req, res) => {
-  res.sendFile(join(__dirname, '../src/index.html'));
+  res.sendFile(join(__dirname, '../dist/index.html'));
 });
 
 app.get('/users', (_req, res) => {
